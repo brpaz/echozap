@@ -6,12 +6,15 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=for-the-badge)](http://commitizen.github.io/cz-cli/)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=for-the-badge)](https://github.com/semantic-release/semantic-release?style=for-the-badge)
+
 [![Actions Status](https://github.com/brpaz/echozap/workflows/CI/badge.svg?style=for-the-badge)](https://github.com/brpaz/echozap/actions)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/99c5875d156440c0b861dad80c76c01f)](https://www.codacy.com/manual/brpaz/echozap?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=brpaz/echozap&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://api.codacy.com/project/badge/Coverage/99c5875d156440c0b861dad80c76c01f)](https://www.codacy.com/manual/brpaz/echozap?utm_source=github.com&utm_medium=referral&utm_content=brpaz/echozap&utm_campaign=Badge_Coverage)
 
 ## Pre-requisites
 
 *  Go with Go modules enabled.
-*  [Echo](https://echo.labstack.com/)
+*  [Echo v4](https://echo.labstack.com/)
 *  [Zap](https://github.com/uber-go/zap)
 
 ## Usage
@@ -23,7 +26,7 @@ import (
 	"net/http"
 
 	"github.com/brpaz/echozap"
-	"github.com/labstack/echo"
+	"github.com/labstack/echo/v4"
 	"go.uber.org/zap"
 )
 
