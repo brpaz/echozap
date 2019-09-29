@@ -10,9 +10,9 @@
 
 ## Pre-requisites
 
-* Go with Go modules enabled.
-* [Echo](https://echo.labstack.com/)
-* [Zap](https://github.com/uber-go/zap)
+*  Go with Go modules enabled.
+*  [Echo](https://echo.labstack.com/)
+*  [Zap](https://github.com/uber-go/zap)
 
 ## Usage
 
@@ -36,16 +36,16 @@ func main() {
 
 The following information is logged:
 
-* Status Code
-* Time
-* Uri
-* Method
-* Hostname
-* Remote IP Address
+*  Status Code
+*  Time
+*  Uri
+*  Method
+*  Hostname
+*  Remote IP Address
 
 ## Todo
 
-* Add more customization options.
+*  Add more customization options.
 
 ## 🤝 Contributing
 
@@ -63,8 +63,8 @@ Give a ⭐️ to the project, or just:
 
 👤 **Bruno Paz**
 
-* Website: [https://github.com/brpaz](https://github.com/brpaz)
-* Github: [@brpaz](https://github.com/brpaz)
+*  Website: [https://github.com/brpaz](https://github.com/brpaz)
+*  Github: [@brpaz](https://github.com/brpaz)
 
 ## 📝 License
 
