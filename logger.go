@@ -1,10 +1,11 @@
-package main
+package echozap
 
 import (
+	"time"
+
 	"github.com/labstack/echo/v4"
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
-	"time"
 )
 
 // ZapLogger is a middleware and zap to provide an "access log" like logging for each request.

@@ -1,13 +1,14 @@
-package main
+package echozap
 
 import (
+	"net/http"
+	"net/http/httptest"
+	"testing"
+
 	"github.com/labstack/echo/v4"
 	"github.com/stretchr/testify/assert"
 	"go.uber.org/zap"
 	"go.uber.org/zap/zaptest/observer"
-	"net/http"
-	"net/http/httptest"
-	"testing"
 )
 
 func TestZapLogger(t *testing.T) {
