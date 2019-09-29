@@ -1,12 +1,12 @@
 
 # echozap
 
-> An [Echo](https://echo.labstack.com/) middleware for [Zap](https://github.com/uber-go/zap) Logging Library.
+> Middleware for Golang [Echo](https://echo.labstack.com/) framework that provides integration with Uber´s [Zap](https://github.com/uber-go/zap)  logging library for logging HTTP requests.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=for-the-badge)](http://commitizen.github.io/cz-cli/)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release?style=for-the-badge)
-[![Actions Status](https://github.com/brpaz/echo-zap/workflows/Build/badge.svg?style=for-the-badge)](https://github.com/brpaz/echo-zap/actions)
+[![Actions Status](https://github.com/brpaz/echo-zap/workflows/CI/badge.svg?style=for-the-badge)](https://github.com/brpaz/echozap/actions)
 
 ## Pre-requisites
 
