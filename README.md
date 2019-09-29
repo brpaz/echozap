@@ -5,8 +5,8 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=for-the-badge)](http://commitizen.github.io/cz-cli/)
-[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release?style=for-the-badge)
-[![Actions Status](https://github.com/brpaz/echo-zap/workflows/CI/badge.svg?style=for-the-badge)](https://github.com/brpaz/echozap/actions)
+[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=for-the-badge)](https://github.com/semantic-release/semantic-release?style=for-the-badge)
+[![Actions Status](https://github.com/brpaz/echozap/workflows/CI/badge.svg?style=for-the-badge)](https://github.com/brpaz/echozap/actions)
 
 ## Pre-requisites
 
@@ -17,19 +17,28 @@
 ## Usage
 
 ```go
+package main
+
 import (
-	"github.com/labstack/echo/v4"
+	"net/http"
+
+	"github.com/brpaz/echozap"
+	"github.com/labstack/echo"
 	"go.uber.org/zap"
-    "github.com/brpaz/echozap"
 )
 
 func main() {
-    e := echo.New()
-    zapLogger, _ = zap.NewProduction()
+	e := echo.New()
 
-    e.Use(echozap.ZapLogger(zapLogger))
+	zapLogger, _ := zap.NewProduction()
+
+	e.Use(echozap.ZapLogger(zapLogger))
+
+	e.GET("/", func(c echo.Context) error {
+		return c.String(http.StatusOK, "Hello, World!")
+	})
+	e.Logger.Fatal(e.Start(":1323"))
 }
-
 ```
 
 ## Logged details
