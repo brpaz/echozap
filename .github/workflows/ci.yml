@@ -28,7 +28,6 @@ jobs:
   test:
     name: Test
     runs-on: ubuntu-latest
-    needs: [lint, build]
     steps:
       - name: Set up Go
         uses: actions/setup-go@v1
@@ -52,7 +51,7 @@ jobs:
   release:
     name: Create Release
     runs-on: ubuntu-latest
-    needs: [lint, build, test]
+    needs: [lint, test]
     steps:
       - uses: actions/checkout@master
         if: github.event_name == 'push'
