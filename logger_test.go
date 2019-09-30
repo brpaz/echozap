@@ -34,8 +34,7 @@ func TestZapLogger(t *testing.T) {
 	assert.Equal(t, 1, logs.Len())
 	assert.Equal(t, int64(200), logFields["status"])
 	assert.NotNil(t, logFields["time"])
-	assert.Equal(t, "GET", logFields["method"])
-	assert.Equal(t, "/something", logFields["uri"])
+	assert.Equal(t, "GET /something", logFields["request"])
 	assert.NotNil(t, logFields["host"])
 	assert.NotNil(t, logFields["size"])
 }

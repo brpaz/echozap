@@ -3,8 +3,7 @@ engines:
  golint:
  govet:
  coverage:
-   #exclude_paths:
-   #  - config/engines.yml
 exclude_paths:
   - 'vendor/**'
   - 'testdata/**/*'
+  - 'README.md'

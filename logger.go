@@ -1,6 +1,7 @@
 package echozap
 
 import (
+	"fmt"
 	"time"
 
 	"github.com/labstack/echo/v4"
@@ -22,20 +23,20 @@ func ZapLogger(log *zap.Logger) echo.MiddlewareFunc {
 			req := c.Request()
 			res := c.Response()
 
-			id := req.Header.Get(echo.HeaderXRequestID)
-			if id == "" {
-				id = res.Header().Get(echo.HeaderXRequestID)
-			}
-
 			fields := []zapcore.Field{
 				zap.String("remote_ip", c.RealIP()),
 				zap.String("time", time.Since(start).String()),
-				zap.String("request_id", id),
 				zap.String("host", req.Host),
-				zap.String("method", req.Method),
-				zap.String("uri", req.RequestURI),
+				zap.String("request", fmt.Sprintf("%s %s", req.Method, req.RequestURI)),
 				zap.Int("status", res.Status),
-				zap.String("size", res.Header().Get("Content-Length")),
+				zap.Int64("size", res.Size),
+				zap.String("user_agent", req.UserAgent()),
+			}
+
+			id := req.Header.Get(echo.HeaderXRequestID)
+			if id == "" {
+				id = res.Header().Get(echo.HeaderXRequestID)
+				fields = append(fields, zap.String("request_id", id))
 			}
 
 			n := res.Status
