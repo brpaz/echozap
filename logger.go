@@ -17,6 +17,7 @@ func ZapLogger(log *zap.Logger) echo.MiddlewareFunc {
 
 			err := next(c)
 			if err != nil {
+				log = log.With(zap.Error(err))
 				c.Error(err)
 			}
 
