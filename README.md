@@ -1,5 +1,5 @@
 
-# echozap
+# echozap - Public Fork
 
 > Middleware for Golang [Echo](https://echo.labstack.com/) framework that provides integration with Uber´s [Zap](https://github.com/uber-go/zap)  logging library for logging HTTP requests.
 
