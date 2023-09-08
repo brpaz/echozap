@@ -16,13 +16,16 @@ type (
 	ZapLoggerConfig struct {
 		// Skipper defines a function to skip middleware
 		Skipper Skipper
+		// IncludeRequestId
+		IncludeHeader []string
 	}
 )
 
 var (
 	// DefaultZapLoggerConfig is the default ZapLogger middleware config.
 	DefaultZapLoggerConfig = ZapLoggerConfig{
-		Skipper: DefaultSkipper,
+		Skipper:       DefaultSkipper,
+		IncludeHeader: nil,
 	}
 )
 
@@ -69,25 +72,28 @@ func ZapLoggerWithConfig(log *zap.Logger, config ZapLoggerConfig) echo.Middlewar
 				zap.String("user_agent", req.UserAgent()),
 			}
 
-			id := req.Header.Get(echo.HeaderXRequestID)
-			if id == "" {
-				id = res.Header().Get(echo.HeaderXRequestID)
+			if config.IncludeHeader != nil {
+				for _, header := range config.IncludeHeader {
+					fields = append(fields, zap.String(string(header), req.Header.Get(header)))
+				}
 			}
-			fields = append(fields, zap.String("request_id", id))
 
-			n := res.Status
-			switch {
-			case n >= 500:
-				log.With(zap.Error(err)).Error("Server error", fields...)
-			case n >= 400:
-				log.With(zap.Error(err)).Warn("Client error", fields...)
-			case n >= 300:
-				log.Info("Redirection", fields...)
-			default:
-				log.Info("Success", fields...)
-			}
+			writeLog(log, res.Status, err, fields)
 
 			return nil
 		}
+	}
+}
+
+func writeLog(log *zap.Logger, status int, err error, fields []zapcore.Field) {
+	switch {
+	case status >= 500:
+		log.With(zap.Error(err)).Error("Server error", fields...)
+	case status >= 400:
+		log.With(zap.Error(err)).Warn("Client error", fields...)
+	case status >= 300:
+		log.Info("Redirection", fields...)
+	default:
+		log.Info("Success", fields...)
 	}
 }
