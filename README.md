@@ -62,6 +62,8 @@ Customization can be made on 2 configurable items:
 1. Skipper: skip logging based on the given condition
 2. IncludeHeader: add custom log field based on the provided list of header keys
 
+Usage:
+
 ```go
 package main
 
