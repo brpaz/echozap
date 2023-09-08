@@ -96,8 +96,8 @@ func TestZapLoggerWithConfigIncludeHeader(t *testing.T) {
 
 	logFields := logs.AllUntimed()[0].ContextMap()
 	assert.Equal(t, 1, logs.Len())
-	assert.NotNil(t, logFields[echo.HeaderXRequestID])
-	assert.Equal(t, "test-request-id", logFields[echo.HeaderXRequestID])
-	assert.NotNil(t, logFields[customHeaderKey])
-	assert.Equal(t, "my-custom-header-value", logFields[customHeaderKey])
+	assert.NotNil(t, logFields[strings.ToLower(echo.HeaderXRequestID)])
+	assert.Equal(t, "test-request-id", logFields[strings.ToLower(echo.HeaderXRequestID)])
+	assert.NotNil(t, logFields[strings.ToLower(customHeaderKey)])
+	assert.Equal(t, "my-custom-header-value", logFields[strings.ToLower(customHeaderKey)])
 }

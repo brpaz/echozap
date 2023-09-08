@@ -2,6 +2,7 @@ package echozap
 
 import (
 	"fmt"
+	"strings"
 	"time"
 
 	"github.com/labstack/echo/v4"
@@ -74,7 +75,7 @@ func ZapLoggerWithConfig(log *zap.Logger, config ZapLoggerConfig) echo.Middlewar
 
 			if config.IncludeHeader != nil {
 				for _, header := range config.IncludeHeader {
-					fields = append(fields, zap.String(string(header), req.Header.Get(header)))
+					fields = append(fields, zap.String(strings.ToLower(string(header)), req.Header.Get(header)))
 				}
 			}
 
