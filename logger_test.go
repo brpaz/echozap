@@ -1,6 +1,7 @@
 package echozap
 
 import (
+	"fmt"
 	"net/http"
 	"net/http/httptest"
 	"strings"
@@ -71,8 +72,8 @@ func TestZapLoggerWithConfig(t *testing.T) {
 
 func TestZapLoggerWithConfigIncludeHeader(t *testing.T) {
 	testPathC := "/path-C"
-
 	customHeaderKey := "My-Custom-Header"
+
 	e := echo.New()
 	req := httptest.NewRequest(http.MethodGet, testPathC, nil)
 	req.Header.Set(echo.HeaderXRequestID, "test-request-id")
@@ -95,6 +96,7 @@ func TestZapLoggerWithConfigIncludeHeader(t *testing.T) {
 	assert.Nil(t, err)
 
 	logFields := logs.AllUntimed()[0].ContextMap()
+	fmt.Printf("%+v\n", logFields)
 	assert.Equal(t, 1, logs.Len())
 	assert.NotNil(t, logFields[strings.ToLower(echo.HeaderXRequestID)])
 	assert.Equal(t, "test-request-id", logFields[strings.ToLower(echo.HeaderXRequestID)])
