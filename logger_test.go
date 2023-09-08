@@ -1,7 +1,6 @@
 package echozap
 
 import (
-	"fmt"
 	"net/http"
 	"net/http/httptest"
 	"strings"
@@ -96,7 +95,6 @@ func TestZapLoggerWithConfigIncludeHeader(t *testing.T) {
 	assert.Nil(t, err)
 
 	logFields := logs.AllUntimed()[0].ContextMap()
-	fmt.Printf("%+v\n", logFields)
 	assert.Equal(t, 1, logs.Len())
 	assert.NotNil(t, logFields[strings.ToLower(echo.HeaderXRequestID)])
 	assert.Equal(t, "test-request-id", logFields[strings.ToLower(echo.HeaderXRequestID)])
