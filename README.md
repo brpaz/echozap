@@ -1,5 +1,5 @@
 
-# echozap
+# echozap - BerryPay Public Fork
 
 > Middleware for Golang [Echo](https://echo.labstack.com/) framework that provides integration with Uber´s [Zap](https://github.com/uber-go/zap)  logging library for logging HTTP requests.
 
@@ -25,7 +25,7 @@ package main
 import (
 	"net/http"
 
-	"github.com/brpaz/echozap"
+	"github.com/berrypay/echozap"
 	"github.com/labstack/echo/v4"
 	"go.uber.org/zap"
 )
@@ -55,6 +55,45 @@ The following information is logged:
 *  Hostname
 *  Remote IP Address
 
+## Configuration
+
+Customization can be made on 2 configurable items:
+
+1. Skipper: skip logging based on the given condition
+2. IncludeHeader: add custom log field based on the provided list of header keys
+
+Usage:
+
+```go
+package main
+
+import (
+	"net/http"
+
+	"github.com/berrypay/echozap"
+	"github.com/labstack/echo/v4"
+	"go.uber.org/zap"
+)
+
+func main() {
+	e := echo.New()
+
+	zapLogger, _ := zap.NewProduction()
+
+	e.Use(echozap.ZapLoggerWithConfig(zapLogger, echozap.ZapLoggerConfig{
+        Skipper: nil,
+		IncludeHeader: []string{
+			echo.HeaderXRequestID,
+		},
+	}))
+
+	e.GET("/", func(c echo.Context) error {
+		return c.String(http.StatusOK, "Hello, World!")
+	})
+	e.Logger.Fatal(e.Start(":1323"))
+}
+```
+
 ## Todo
 
 *  Add more customization options.
@@ -77,6 +116,10 @@ Give a ⭐️ to the project, or just:
 
 *  Website: [https://github.com/brpaz](https://github.com/brpaz)
 *  Github: [@brpaz](https://github.com/brpaz)
+
+👤 **Sallehuddin Abdul Latif**
+*  Website: [https://www.berrypay.com](https://www.berrypay.com)
+*  Github: [@salleh](https://github.com/salleh) [@BerryPay](https://github.com/berrypay)
 
 ## 📝 License
 
