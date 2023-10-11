@@ -118,7 +118,7 @@ Give a ⭐️ to the project, or just:
 *  Github: [@brpaz](https://github.com/brpaz)
 
 👤 **Sallehuddin Abdul Latif**
-*  Website: [https://www.berrypay.com](https://www.berrypay.com)(https://www.berrypay.com)
+*  Website: [https://www.berrypay.com](https://www.berrypay.com)
 *  Github: [@salleh](https://github.com/salleh) [@BerryPay](https://github.com/berrypay)
 
 ## 📝 License
