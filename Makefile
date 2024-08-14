@@ -9,7 +9,7 @@ export GO111MODULE=on
 dev-deps: ## Install Development dependencies
 	npm i -g conventional-changelog-cli commitizen
 
-dev: ## Setup the Development envrionment
+dev: ## Setup the Development environment
 	pre-commit install
 
 fmt: ## Formats the go code using gofmt
